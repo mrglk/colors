@@ -19,7 +19,7 @@ const props = defineProps({
       :class="[{ 'basketItem__inner--delated': delated }, 'basketItem__inner']"
     >
       <div class="basketItem__photo">
-        <img :src="photo" alt="Продукт" />
+        <img :src="photo" :alt="type" />
       </div>
       <div class="basketItem__textAndButtons">
         <div class="basketItem__left">

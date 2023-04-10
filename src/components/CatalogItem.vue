@@ -12,7 +12,7 @@ const props = defineProps({
 <template>
   <div class="catalogItem">
     <div class="catalogItem__photo">
-      <img alt="Product" :src="photo" />
+      <img :alt="type" :src="photo" />
     </div>
     <p class="catalogItem__title">{{ type }} {{ name }}</p>
     <div class="catalogItem__bottom">

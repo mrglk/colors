@@ -8,43 +8,49 @@ import "swiper/css/pagination";
 
 const sliderData = ref([
   {
-    src: "/src/assets/imgs/slider.jpg",
-    srcset: "/src/assets/imgs/slider-2x.jpg 2x",
+    src: "./imgs/slider.jpg",
+    srcset: "./imgs/slider-2x.jpg 2x",
+    alt: 'Flowers on the background of a green wall',
     title: "Краски",
     description:
       "Идеально подходят для стен и других поверхностей. Найди свой идеальный цвет!",
   },
   {
-    src: "/src/assets/imgs/slider.jpg",
-    srcset: "/src/assets/imgs/slider-2x.jpg 2x",
+    src: "./imgs/slider.jpg",
+    srcset: "./imgs/slider-2x.jpg 2x",
+    alt: 'Flowers on the background of a green wall',
     title: "Краски",
     description:
       "Идеально подходят для стен и других поверхностей. Найди свой идеальный цвет!",
   },
   {
-    src: "/src/assets/imgs/slider.jpg",
-    srcset: "/src/assets/imgs/slider-2x.jpg 2x",
+    src: "./imgs/slider.jpg",
+    srcset: "./imgs/slider-2x.jpg 2x",
+    alt: 'Flowers on the background of a green wall',
     title: "Краски",
     description:
       "Идеально подходят для стен и других поверхностей. Найди свой идеальный цвет!",
   },
   {
-    src: "/src/assets/imgs/slider.jpg",
-    srcset: "/src/assets/imgs/slider-2x.jpg 2x",
+    src: "./imgs/slider.jpg",
+    srcset: "./imgs/slider-2x.jpg 2x",
+    alt: 'Flowers on the background of a green wall',
     title: "Краски",
     description:
       "Идеально подходят для стен и других поверхностей. Найди свой идеальный цвет!",
   },
   {
-    src: "/src/assets/imgs/slider.jpg",
-    srcset: "/src/assets/imgs/slider-2x.jpg 2x",
+    src: "./imgs/slider.jpg",
+    srcset: "./imgs/slider-2x.jpg 2x",
+    alt: 'Flowers on the background of a green wall',
     title: "Краски",
     description:
       "Идеально подходят для стен и других поверхностей. Найди свой идеальный цвет!",
   },
   {
-    src: "/src/assets/imgs/slider.jpg",
-    srcset: "/src/assets/imgs/slider-2x.jpg 2x",
+    src: "./imgs/slider.jpg",
+    srcset: "./imgs/slider-2x.jpg 2x",
+    alt: 'Flowers on the background of a green wall',
     title: "Краски",
     description:
       "Идеально подходят для стен и других поверхностей. Найди свой идеальный цвет!",
@@ -69,7 +75,7 @@ const sliderData = ref([
       <swiper-slide v-for="data in sliderData" :key="data.description">
         <div class="slider__inner">
           <div class="slider__imgWrapper">
-            <img :src="data.src" :srcset="data.srcset" :alt="data.title" />
+            <img :src="data.src" :srcset="data.srcset" :alt="data.alt" />
           </div>
           <div class="container">
             <div class="container__row">
@@ -253,7 +259,8 @@ const sliderData = ref([
 }
 
 @media screen and (max-width: 950px) {
-  .slider__swiper {
+  .slider__swiper,
+  #slider__pagination {
     display: none;
   }
   .slider__mobileVisible {
