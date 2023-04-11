@@ -1,5 +1,5 @@
 <script setup>
-import { useCart  } from "../composables/useCart.js";
+import { useCart } from "../composables/useCart.js";
 const { addToCart, reduceProductsInCart, removeProductFromCart } = useCart();
 
 const props = defineProps({
@@ -8,8 +8,7 @@ const props = defineProps({
   delated: Boolean,
 });
 
-const {type, title, name, photo, id, price} = props.product;
-
+const { type, title, name, photo, id, price } = props.product;
 </script>
 
 <template>
@@ -18,7 +17,7 @@ const {type, title, name, photo, id, price} = props.product;
       :class="[{ 'basketItem__inner--delated': delated }, 'basketItem__inner']"
     >
       <div class="basketItem__photo">
-        <img :src="photo" :alt="product.type" />
+        <img :src="photo[0]" :alt="type" />
       </div>
       <div class="basketItem__textAndButtons">
         <div class="basketItem__left">
@@ -248,6 +247,16 @@ const {type, title, name, photo, id, price} = props.product;
   & img {
     width: 24px;
     height: 24px;
+  }
+}
+@media screen and (max-width: 950px) {
+  .basketItem__countButton {
+    &:hover {
+      background-color: $grey;
+    }
+    &:active {
+      background-color: $green;
+    }
   }
 }
 

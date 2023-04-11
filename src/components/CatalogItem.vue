@@ -7,14 +7,15 @@ const props = defineProps({
   type: String,
   name: String,
   price: Number,
-  photo: String,
+  photo: Array,
 });
 </script>
 
 <template>
   <div class="catalogItem">
     <div class="catalogItem__photo">
-      <img :alt="type" :src="photo" />
+      <img class="catalogItem__photoImg" :alt="type" :src="photo[0]" />
+      <img :alt="type" :src="photo[1]" />
     </div>
     <p class="catalogItem__title">{{ type }} {{ name }}</p>
     <div class="catalogItem__bottom">
@@ -35,6 +36,10 @@ const props = defineProps({
   & .catalogItem__button {
     display: block;
   }
+
+  & .catalogItem__photoImg {
+    opacity: 0;
+  }
 }
 .catalogItem__photo {
   position: relative;
@@ -43,13 +48,12 @@ const props = defineProps({
   margin-bottom: 16px;
 }
 
-.catalogItem__photo img {
+.catalogItem__photoImg {
   position: absolute;
   height: 100%;
   object-fit: cover;
   object-position: center center;
 }
-
 .catalogItem__title {
   font-weight: 300;
   font-size: 16px;
@@ -111,6 +115,9 @@ const props = defineProps({
 }
 
 @media screen and (max-width: 950px) {
+  .catalogItem:hover .catalogItem__photoImg {
+    opacity: 1;
+}
   .catalogItem__title {
     font-weight: 300;
     font-size: 14px;

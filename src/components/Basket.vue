@@ -130,6 +130,7 @@ const props = defineProps({
 
 .basket__content {
   flex-grow: 1;
+      overflow: hidden;
 }
 
 .basket__list {
@@ -170,6 +171,7 @@ const props = defineProps({
 .basket__bottom {
   display: flex;
   justify-content: space-between;
+  padding-top: 10px;
 }
 
 .basket__totalTitle {

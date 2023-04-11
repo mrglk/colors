@@ -2,7 +2,8 @@ import { ref, computed } from "vue";
 import { productsList } from "../data/products.js"
 
 function cart() {
-    const productsInCart = ref({});
+    const productsInCart = ref({
+    });
 
     const addToCart = (id) => {
         productsInCart.value[id] = Object.keys(productsInCart.value).includes(id.toString()) ? productsInCart.value[id] + 1 : 1;

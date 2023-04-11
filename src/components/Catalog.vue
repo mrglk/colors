@@ -154,6 +154,7 @@ const sortedProducts = computed(() => {
 }
 
 .catalog__filter {
+  min-width: 167px;
   margin-right: 138px;
 }
 .catalog__content {
@@ -231,6 +232,7 @@ const sortedProducts = computed(() => {
   .catalog__filter {
     z-index: 5;
     margin-right: 0;
+    min-width: auto;
   }
   .catalog__filterButton {
     display: block;
