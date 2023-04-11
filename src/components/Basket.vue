@@ -1,23 +1,18 @@
 <script setup>
 import { productsList } from "../data/products";
 import { setDeclension } from "../utils/helpers.js";
+import { useCart } from "../composables/useCart.js";
+const { productsInCart, addToCart, clearCart, amountOfProductsInCart, totalPrice } = useCart();
 
 const props = defineProps({
   isOpen: Boolean,
   openBasket: Function,
-  productsInCart: Object,
-  amountOfProductsInCart: Number,
-  totalPrice: Number,
-  addToCart: Function,
-  reduceProductsInCart: Function,
-  removeProductFromCart: Function,
-  clearCart: Function,
 });
 </script>
 
 <template>
   <div :class="[{ 'basket--active': isOpen }, 'basket']">
-    <div class="basket__inner">
+    <div class="basket__inner" v-if="productsInCart">
       <div class="basket__top">
         <h2 class="basket__header">Корзина</h2>
         <button class="basket__close" @click="openBasket(false)"></button>
@@ -29,33 +24,26 @@ const props = defineProps({
           </p>
           <button
             class="basket__clear"
-            v-if="Object.entries({ ...productsInCart }).length !== 0"
+            v-if="Object.entries(productsInCart).length !== 0"
             @click="clearCart()"
           >
             очистить список
           </button>
         </div>
         <div
-          v-if="Object.entries({ ...productsInCart }).length !== 0"
+          v-if="Object.entries(productsInCart).length !== 0"
           class="basket__list"
         >
           <div
             class="basket__listItem"
-            v-for="product in Object.entries({ ...productsInCart })"
-            :key="product[0]"
+            v-for="[id, count] in Object.entries(productsInCart)"
+            :key="id"
           >
             <BasketItem
-              :key="product[0]"
-              :id="product[0]"
-              :count="product[1]"
-              :delated="product[1] !== 0 ? false : true"
-              :price="productsList.find((item) => item.id == product[0]).price"
-              :type="productsList.find((item) => item.id == product[0]).type"
-              :title="productsList.find((item) => item.id == product[0]).name"
-              :photo="productsList.find((item) => item.id == product[0]).photo"
-              :addToCart="addToCart"
-              :reduceProductsInCart="reduceProductsInCart"
-              :removeProductFromCart="removeProductFromCart"
+              :key="id"
+              :count="count"
+              :product="productsList.get(+id)"
+              :delated="count === 0"
             />
           </div>
         </div>
@@ -65,7 +53,7 @@ const props = defineProps({
         <div class="basket__total">
           <p class="basket__totalTitle">Итого</p>
           <p class="basket__totalPrice">
-            {{ new Intl.NumberFormat("ru-RU").format(props.totalPrice) }}
+            {{ new Intl.NumberFormat("ru-RU").format(totalPrice) }}
           </p>
         </div>
         <button class="basket__button">Оформить заказ</button>

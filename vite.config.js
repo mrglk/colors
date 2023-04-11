@@ -19,6 +19,3 @@ export default defineConfig({
     },
   },
 })
-
-
-// @import "@/assets/styles/_fonts.scss";

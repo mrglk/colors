@@ -1,10 +1,10 @@
 <script setup>
+
 const props = defineProps({
   openFilter: Function,
   isFilterOpen: Boolean,
   openSelect: Function,
   isSelectOpen: Boolean,
-  addToCart: Function
 });
 
 </script>
@@ -20,7 +20,6 @@ const props = defineProps({
         :is-filter-open="isFilterOpen"
         :open-select="openSelect"
         :is-select-open="isSelectOpen"
-        :addToCart="addToCart"
       />
     </div>
   </div>

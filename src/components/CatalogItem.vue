@@ -1,11 +1,13 @@
 <script setup>
+import { useCart } from "../composables/useCart.js";
+const { addToCart } = useCart();
+
 const props = defineProps({
   id: Number,
   type: String,
   name: String,
   price: Number,
   photo: String,
-  addToCart: Function,
 });
 </script>
 

@@ -1,16 +1,10 @@
 <script setup>
 import { ref } from "vue";
-import SwiperCore, {
-  Navigation,
-  Pagination,
-  Autoplay,
-  EffectFade,
-} from "swiper";
+import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import 'swiper/css/effect-fade';
 
 const sliderData = ref([
   {
@@ -77,12 +71,8 @@ const sliderData = ref([
     </div>
     <swiper
       class="slider__swiper"
-      :modules="[Pagination, Autoplay, Navigation, EffectFade]"
+      :modules="[Pagination, Autoplay, Navigation ]"
       :speed="500"
-      :effect="fade"
-      :fadeEffect="{
-        crossFade: true,
-      }"
       :navigation="{ nextEl: '#slider__next' }"
       :loop="true"
       :pagination="{ el: '#slider__pagination', clickable: true }"

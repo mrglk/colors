@@ -1,10 +1,11 @@
 <script setup>
-import { computed } from "vue";
+import { useCart  } from "../composables/useCart.js";
+const { amountOfProductsInCart } = useCart();
+
 
 const props = defineProps({
   openBasket: Function,
   closeBasket: Function,
-  amountOfProductsInCart: Number,
 });
 </script>
 

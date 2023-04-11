@@ -11,7 +11,7 @@ import Catalog from './components/Catalog.vue';
 import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
 import Overlay from "./components/Overlay.vue";
-import Colors from "./pages/Colors.vue";
+import PageColors from "./pages/PageColors.vue";
 
 const app = createApp(App);
 app.component('Filter', Filter);
@@ -25,5 +25,5 @@ app.component('Catalog', Catalog);
 app.component('Header', Header);
 app.component('Footer', Footer);
 app.component('Overlay', Overlay);
-app.component('Colors', Colors);
+app.component('PageColors', PageColors);
 app.mount('#app');

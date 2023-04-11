@@ -1,16 +1,15 @@
 <script setup>
+import { useCart  } from "../composables/useCart.js";
+const { addToCart, reduceProductsInCart, removeProductFromCart } = useCart();
+
 const props = defineProps({
-  id: String,
   count: Number,
-  type: String,
-  title: String,
-  price: Number,
-  photo: String,
-  addToCart: Function,
-  reduceProductsInCart: Function,
-  removeProductFromCart: Function,
+  product: Object,
   delated: Boolean,
 });
+
+const {type, title, name, photo, id, price} = props.product;
+
 </script>
 
 <template>
@@ -19,12 +18,12 @@ const props = defineProps({
       :class="[{ 'basketItem__inner--delated': delated }, 'basketItem__inner']"
     >
       <div class="basketItem__photo">
-        <img :src="photo" :alt="type" />
+        <img :src="photo" :alt="product.type" />
       </div>
       <div class="basketItem__textAndButtons">
         <div class="basketItem__left">
           <div class="basketItem___data">
-            <p class="basketItem___name">{{ type }} {{ title }}</p>
+            <p class="basketItem___name">{{ type }} {{ name }}</p>
             <p class="basketItem___price">{{ price }}</p>
           </div>
         </div>

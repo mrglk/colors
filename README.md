@@ -18,7 +18,7 @@ https://mrglk.github.io/colors/
 
 ```
 git clone https://github.com/mrglk/colors
-cd lonely-chat
+cd colors
 npm install
 npm run dev
 ```

@@ -1,4 +1,4 @@
-export const productsList = [
+const products = [
     {
         id: 1918453,
         type: 'Краска',
@@ -210,3 +210,7 @@ export const productsList = [
         onSale: true
     }
 ]
+
+export const productsList = products.reduce((acc, item) => {
+    return acc.set(item.id, item);
+}, new Map())

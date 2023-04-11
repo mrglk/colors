@@ -8,7 +8,6 @@ const props = defineProps({
   isFilterOpen: Boolean,
   openSelect: Function,
   isSelectOpen: Boolean,
-  addToCart: Function,
 });
 
 const options = [
@@ -64,7 +63,7 @@ const setSelectedOptionIndex = (index) => {
 const setSelectedFilters = (filter) => {
   if (selectedFilters.value.includes(filter)) {
     selectedFilters.value = selectedFilters.value.filter(
-      (label) => label != filter
+      (label) => label !== filter
     );
     return;
   }
@@ -72,11 +71,12 @@ const setSelectedFilters = (filter) => {
 };
 
 const sortedProducts = computed(() => {
-  let products = [...productsList];
-  if (selectedFilters.value.length != 0)
+  let products = [...productsList.values()];
+  if (selectedFilters.value.length !== 0) {
     products = products.filter((product) =>
       selectedFilters.value.every((option) => product[option])
     );
+  }
 
   switch (options[selectedOptionIndex.value].label) {
     case "isExpensive":
@@ -140,7 +140,6 @@ const sortedProducts = computed(() => {
               v-bind:name="product.name"
               v-bind:price="product.price"
               v-bind:photo="product.photo"
-              :addToCart="addToCart"
             />
           </div>
         </div>
