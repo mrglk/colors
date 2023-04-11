@@ -205,6 +205,7 @@ const props = defineProps({
   border: none;
   border-radius: 4px;
   background-color: $green;
+  color: $black;
   font-weight: 500;
   font-size: 12px;
   line-height: 15px;
@@ -214,11 +215,6 @@ const props = defineProps({
   padding: 20px 57px;
   margin: 0;
   transition: all 0.1s ease-in-out;
-
-  &:hover {
-    background-color: $black;
-    color: $white;
-  }
 }
 
 @media screen and (max-width: 650px) {

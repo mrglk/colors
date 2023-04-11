@@ -8,7 +8,7 @@ const basketModal = useModal();
 const selectModal = useModal();
 
 const productsInCart = ref({
-  1918453: 3,
+  // 1918453: 3,
 });
 
 const closeModal = () => {
@@ -54,7 +54,7 @@ const totalPrice = computed(() => {
 <template>
   <Header :open-basket="basketModal.setModalState" :amountOfProductsInCart="amountOfProductsInCart"/>
   <main>
-    <Home
+    <Colors
       :open-filter="filterModal.setModalState"
       :is-filter-open="filterModal.active.value"
       :open-select="selectModal.setModalState"
@@ -81,7 +81,6 @@ const totalPrice = computed(() => {
 </template>
 
 <style lang="scss">
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 * {
   box-sizing: border-box;

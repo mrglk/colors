@@ -1,16 +1,22 @@
 <script setup>
-import { ref, computed } from "vue";
-import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper";
+import { ref } from "vue";
+import SwiperCore, {
+  Navigation,
+  Pagination,
+  Autoplay,
+  EffectFade,
+} from "swiper";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import 'swiper/css/effect-fade';
 
 const sliderData = ref([
   {
     src: "./imgs/slider.jpg",
     srcset: "./imgs/slider-2x.jpg 2x",
-    alt: 'Flowers on the background of a green wall',
+    alt: "Flowers on the background of a green wall",
     title: "Краски",
     description:
       "Идеально подходят для стен и других поверхностей. Найди свой идеальный цвет!",
@@ -18,7 +24,7 @@ const sliderData = ref([
   {
     src: "./imgs/slider.jpg",
     srcset: "./imgs/slider-2x.jpg 2x",
-    alt: 'Flowers on the background of a green wall',
+    alt: "Flowers on the background of a green wall",
     title: "Краски",
     description:
       "Идеально подходят для стен и других поверхностей. Найди свой идеальный цвет!",
@@ -26,7 +32,7 @@ const sliderData = ref([
   {
     src: "./imgs/slider.jpg",
     srcset: "./imgs/slider-2x.jpg 2x",
-    alt: 'Flowers on the background of a green wall',
+    alt: "Flowers on the background of a green wall",
     title: "Краски",
     description:
       "Идеально подходят для стен и других поверхностей. Найди свой идеальный цвет!",
@@ -34,7 +40,7 @@ const sliderData = ref([
   {
     src: "./imgs/slider.jpg",
     srcset: "./imgs/slider-2x.jpg 2x",
-    alt: 'Flowers on the background of a green wall',
+    alt: "Flowers on the background of a green wall",
     title: "Краски",
     description:
       "Идеально подходят для стен и других поверхностей. Найди свой идеальный цвет!",
@@ -42,7 +48,7 @@ const sliderData = ref([
   {
     src: "./imgs/slider.jpg",
     srcset: "./imgs/slider-2x.jpg 2x",
-    alt: 'Flowers on the background of a green wall',
+    alt: "Flowers on the background of a green wall",
     title: "Краски",
     description:
       "Идеально подходят для стен и других поверхностей. Найди свой идеальный цвет!",
@@ -50,7 +56,7 @@ const sliderData = ref([
   {
     src: "./imgs/slider.jpg",
     srcset: "./imgs/slider-2x.jpg 2x",
-    alt: 'Flowers on the background of a green wall',
+    alt: "Flowers on the background of a green wall",
     title: "Краски",
     description:
       "Идеально подходят для стен и других поверхностей. Найди свой идеальный цвет!",
@@ -60,12 +66,27 @@ const sliderData = ref([
 
 <template>
   <section class="slider container">
+    <div class="container">
+      <div class="container__row">
+        <div class="slider__breadcrumbs slider__breadcrumbs--margin">
+          <a href="#" class="slider__breadcrumbsLink">Главная</a>
+          <a href="#" class="slider__breadcrumbsLink">Продукты</a>
+          <a href="#" class="slider__breadcrumbsLink">Краски</a>
+        </div>
+      </div>
+    </div>
     <swiper
       class="slider__swiper"
-      :modules="[Pagination, Autoplay, Navigation]"
+      :modules="[Pagination, Autoplay, Navigation, EffectFade]"
+      :speed="500"
+      :effect="fade"
+      :fadeEffect="{
+        crossFade: true,
+      }"
       :navigation="{ nextEl: '#slider__next' }"
       :loop="true"
       :pagination="{ el: '#slider__pagination', clickable: true }"
+      :allow-touch-move="false"
       :autoplay="{
         delay: 7000,
         disableOnInteraction: false,
@@ -80,11 +101,6 @@ const sliderData = ref([
           <div class="container">
             <div class="container__row">
               <div class="slider__content">
-                <div class="slider__breadcrumbs">
-                  <a href="#" class="slider__breadcrumbsLink">Главная</a>
-                  <a href="#" class="slider__breadcrumbsLink">Продукты</a>
-                  <a href="#" class="slider__breadcrumbsLink">Краски</a>
-                </div>
                 <div class="slider__text">
                   <h1 class="slider__header">{{ data.title }}</h1>
                   <p class="slider__description">
@@ -205,11 +221,14 @@ const sliderData = ref([
 }
 
 .slider__breadcrumbs {
-  position: absolute;
+  z-index: 4;
   display: flex;
-  top: 32px;
-  left: 0;
+
+  &--margin {
+    margin-bottom: -70px;
+  }
 }
+
 .slider__breadcrumbsLink {
   display: flex;
   align-items: center;
@@ -260,21 +279,24 @@ const sliderData = ref([
 
 @media screen and (max-width: 950px) {
   .slider__swiper,
-  #slider__pagination {
+  #slider__pagination,
+  .slider__breadcrumbs--margin {
     display: none;
   }
   .slider__mobileVisible {
     display: block;
   }
   .slider__content {
-    border-top: 1px solid #f6f6f6;
+    flex-direction: column;
     justify-content: flex-start;
-    padding-top: 74px;
+    align-items: flex-start;
+    padding-top: 16px;
     padding-bottom: 0;
+    border-top: 1px solid #f6f6f6;
   }
 
   .slider__breadcrumbs {
-    top: 16px;
+    margin-bottom: 48px;
   }
 
   .slider__breadcrumbsLink {

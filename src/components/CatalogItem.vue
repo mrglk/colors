@@ -123,6 +123,14 @@ const props = defineProps({
     height: 24px;
     border-radius: 6px;
 
+    &:hover {
+    background-color: $grey;
+  }
+
+  &:active {
+    background-color: $green;
+  }
+
     &::after,
     &::before {
       position: absolute;
