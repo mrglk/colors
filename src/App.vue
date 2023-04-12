@@ -29,7 +29,7 @@ const closeModal = () => {
   <Footer />
   <Basket
     :is-open="basketModal.active.value"
-    :open-basket="basketModal.setModalState"
+    :closeBasket="closeModal"
   />
   <Overlay
     :is-active="

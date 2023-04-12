@@ -6,7 +6,7 @@ const { productsInCart, addToCart, clearCart, amountOfProductsInCart, totalPrice
 
 const props = defineProps({
   isOpen: Boolean,
-  openBasket: Function,
+  closeBasket: Function,
 });
 </script>
 
@@ -15,7 +15,7 @@ const props = defineProps({
     <div class="basket__inner" v-if="productsInCart">
       <div class="basket__top">
         <h2 class="basket__header">Корзина</h2>
-        <button class="basket__close" @click="openBasket(false)"></button>
+        <button class="basket__close" @click="closeBasket()"></button>
       </div>
       <div class="basket__content">
         <div class="basket__contentHeader">
