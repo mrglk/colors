@@ -34,6 +34,12 @@ function cart() {
         }, 0)
     })
 
+    const onCloseModal = () => {
+        for (let id in productsInCart.value) {
+            productsInCart.value[id] === 0 && delete productsInCart.value[id];
+        }
+    }
+
     return {
         productsInCart,
         addToCart,
@@ -42,7 +48,8 @@ function cart() {
         clearCart,
         amountOfProductsInCart,
         totalPriceForOneProduct,
-        totalPrice
+        totalPrice,
+        onCloseModal
     };
 }
 

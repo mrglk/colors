@@ -1,5 +1,7 @@
 <script setup>
 import { useModal } from "./composables/useModals.js";
+import { useCart } from "./composables/useCart.js";
+const { onCloseModal } = useCart();
 
 const filterModal = useModal();
 const basketModal = useModal();
@@ -7,8 +9,9 @@ const selectModal = useModal();
 
 const closeModal = () => {
   filterModal.setModalState(false);
-  basketModal.setModalState(false);
+  basketModal.setModalState(false)
   selectModal.setModalState(false);
+  onCloseModal();
 };
 
 </script>
