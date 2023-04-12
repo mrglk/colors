@@ -53,6 +53,7 @@ const props = defineProps({
   height: 100%;
   object-fit: cover;
   object-position: center center;
+  transition: all 0.1s ease-in;
 }
 .catalogItem__title {
   font-weight: 300;
@@ -90,7 +91,7 @@ const props = defineProps({
   height: 32px;
   border-radius: 8px;
   background-color: $grey;
-  transition: background-color 0.1s ease-in;
+  transition: all 0.1s ease-in;
 
   &:hover {
     background-color: $green;

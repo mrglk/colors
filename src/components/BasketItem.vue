@@ -1,6 +1,6 @@
 <script setup>
 import { useCart } from "../composables/useCart.js";
-const { addToCart, reduceProductsInCart, removeProductFromCart } = useCart();
+const { addToCart, reduceProductsInCart, removeProductFromCart, totalPriceForOneProduct } = useCart();
 
 const props = defineProps({
   count: Number,
@@ -23,7 +23,7 @@ const { type, title, name, photo, id, price } = props.product;
         <div class="basketItem__left">
           <div class="basketItem___data">
             <p class="basketItem___name">{{ type }} {{ name }}</p>
-            <p class="basketItem___price">{{ price }}</p>
+            <p class="basketItem___price">{{ totalPriceForOneProduct(id) }}</p>
           </div>
         </div>
         <div class="basketItem__right">

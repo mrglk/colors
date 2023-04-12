@@ -24,14 +24,14 @@ const props = defineProps({
           </p>
           <button
             class="basket__clear"
-            v-if="Object.entries(productsInCart).length !== 0"
+            v-if="productsInCart"
             @click="clearCart()"
           >
             очистить список
           </button>
         </div>
         <div
-          v-if="Object.entries(productsInCart).length !== 0"
+          v-if="productsInCart"
           class="basket__list"
         >
           <div
@@ -130,12 +130,7 @@ const props = defineProps({
 
 .basket__content {
   flex-grow: 1;
-      overflow: hidden;
-}
-
-.basket__list {
   overflow-y: scroll;
-  max-height: 480px;
 }
 
 .basket__none {

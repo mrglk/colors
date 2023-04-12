@@ -2,11 +2,10 @@ import { ref, computed } from "vue";
 import { productsList } from "../data/products.js"
 
 function cart() {
-    const productsInCart = ref({
-    });
+    const productsInCart = ref();
 
     const addToCart = (id) => {
-        productsInCart.value[id] = Object.keys(productsInCart.value).includes(id.toString()) ? productsInCart.value[id] + 1 : 1;
+        productsInCart.value[id] = (productsInCart.value[id] ?? 0) + 1;
     }
 
     const reduceProductsInCart = (id) => {
@@ -21,15 +20,17 @@ function cart() {
         productsInCart.value = {};
     }
 
+    const totalPriceForOneProduct = (id) => {
+        return productsList.get(+id).price * productsInCart.value[id]
+    }
+    
     const amountOfProductsInCart = computed(() => {
-        return Object.entries(productsInCart.value).reduce((acc, [currenuId, count]) => {
-            return acc += productsInCart.value[currenuId]
-        }, 0)
+        return Object.values(productsInCart.value).reduce((acc, count) => acc + count , 0)
     })
 
     const totalPrice = computed(() => {
-        return Object.entries(productsInCart.value).reduce((total, [currenuId, count]) => {
-            return total += productsList.get(+currenuId).price * productsInCart.value[currenuId]
+        return Object.entries(productsInCart.value).reduce((acc, [currentId, count]) => {
+            return acc += productsList.get(+currentId).price * count
         }, 0)
     })
 
@@ -40,12 +41,13 @@ function cart() {
         removeProductFromCart,
         clearCart,
         amountOfProductsInCart,
+        totalPriceForOneProduct,
         totalPrice
     };
 }
 
-const a = cart();
+const cartInstance = cart();
 
 export const useCart = () => {
-    return a;
+    return cartInstance;
 }
