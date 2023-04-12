@@ -2,7 +2,7 @@ import { ref, computed } from "vue";
 import { productsList } from "../data/products.js"
 
 function cart() {
-    const productsInCart = ref();
+    const productsInCart = ref({});
 
     const addToCart = (id) => {
         productsInCart.value[id] = (productsInCart.value[id] ?? 0) + 1;
