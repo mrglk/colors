@@ -24,14 +24,14 @@ const props = defineProps({
           </p>
           <button
             class="basket__clear"
-            v-if="productsInCart"
+            v-if="Object.values(productsInCart).length !== 0"
             @click="clearCart()"
           >
             очистить список
           </button>
         </div>
         <div
-          v-if="productsInCart"
+          v-if="Object.values(productsInCart).length !== 0"
           class="basket__list"
         >
           <div
